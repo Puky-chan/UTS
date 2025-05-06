@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Saya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /*Untuk Style umum seluruh ahalaman*/
+        body {
+            font-family: 'Press Start 2P', cursive;
+            /*Font Pixel*/
+            background: #fff;
+            /*Warna latar*/
+            margin: 0;
+            /*menghapus jarak sistem/default*/
+            padding: 0;
+            /*hapus padding default*/
+            color: #ddd;
+            /*warna teks*/
+        }
+
+        /*Untuk mengatur header*/
+        header {
+            background: #222;
+            /*warna latar*/
+            padding: 20px;
+            /*ruang di dalam header*/
+            text-align: center;
+            /*atur posisi teks tengah*/
+            font-size: 1.2rem;
+            /*atur ukuran teks*/
+            position: sticky;
+            /*Agar menempel di atas saat scroll*/
+            top: 0;
+            /*menempel di bagian atas*/
+            z-index: 1000;
+            /*agar kelihatan di atas elemen lain*/
+        }
+
+        /*Mnegatur navigasi bar*/
+        nav {
+            display: flex;
+            /*membuat tampilan jadi mendatar*/
+            justify-content: center;
+            /*atur posisi ke tengah*/
+            gap: 10px;
+            /*jarak antara nav*/
+            background: #fff;
+            padding: 10px;
+            position: sticky;
+            /*agar nav barnya tetap menempel ketika di scroll*/
+            top: 3.5rem;
+            /*agar ada jarak dari header*/
+        }
+
+        /*Mengatur Tombol" navigasi bar*/
+        nav a {
+            background: #222;
+            color: white;
+            text-decoration: none;
+            /*menghilangkan underline*/
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+        }
+
+        /*Mengatur navigasi agar lebih presisi*/
+        #beranda,
+        #tentang,
+        #kontak {
+            scroll-margin-top: 10rem;
+        }
+
+        /*Hover nav bar*/
+        nav a:hover {
+            background: #444;
+        }
+
+        /*mengatur bagian main seprti ukuran dan lainya*/
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #b97b7b;
+            border-radius: 10px;
+            color: #eee;
+        }
+
+        /*Judul*/
+        h2 {
+            margin-top: 0;
+        }
+
+        /*Nebgatur gambar icon email*/
+        .kontak-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /*ukuran ikon*/
+        .kontak-info img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /*Mengatur gambar scr*/
+        .gambar {
+            width: 100%;
+            max-width: auto;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        /*Pengaturan jika web berjalan di mobile device*/
+        @media (max-width: 600px) {
+            body {
+                font-size: 10px;
+            }
+
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.6rem;
+            }
+
+            main {
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>Web Saya</div>
+    </header>
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+    <main id="beranda">
+        <h2>Beranda</h2>
+        <p>Assalamualaikum </p>
+        <p>Ini adalah Website saya yang saya buat</p>
+        <p>untuk tugas UTS.</p>
+        <p>Yaitu website singel page appliction.</p>
+        <p>Web yang saya buat bertema pixel</p>
+        <p>seperti retro game.</p>
+        <p></p>
+        <p>Gambar coba":</p>
+        <img src="https://img.freepik.com/free-vector/pixel-art-background-autumnal-landscape_23-2149597073.jpg?t=st=1746501073~exp=1746504673~hmac=730944430adccbb4049e1c132e745e65491dd3f0f4c193fe350f6e5079a14d72&w=996"
+            alt="pixelartvillage" class="gambar" />
+    </main>
+
+    <main id="tentang">
+        <h2>Tentang</h2>
+        <p>Ini adalah web sederhana yang dibuat dengan HTML </p>
+        <P>dan CSS saja.</p>
+        <p>Desainnya simpel tapi tetap enak dilihat dan </p>
+        <p>ringan. mungkin....</p>
+        <p>Untuk memenuhi tugas kuliah, sambil mempelajari</p>
+        <p>tentang HTML dan CSS</p>
+        <img src="https://img.freepik.com/free-vector/pixel-art-rural-landscape-background_52683-125366.jpg?t=st=1746504846~exp=1746508446~hmac=56ef37912fc3de77b7ac4e1427446cc4efbd8adf789c6e7552d35417e872099f&w=740"
+            alt="pixel-art-background-autumnal-landscape_23-2149597073" class="gambar">
+    </main>
+
+    <main id="kontak">
+        <h2>Kontak</h2>
+        <div class="kontak-info">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="email icon">
+            <span>emailku@example.com</span>
+        </div>
+        <img src="https://img.freepik.com/free-vector/pixelated-earth-planet-clouds_603843-979.jpg?t=st=1746505058~exp=1746508658~hmac=d47c9d4dbb21614bb244f1ddb34df527162d093e22cefc75c75f45e758069042&w=740"
+            alt="pixelated-earth-planet-clouds_603843-979" class="gambar">
+    </main>
+</body>
+
+</html>
