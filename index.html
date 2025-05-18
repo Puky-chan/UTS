@@ -1,187 +1,272 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Saya</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        /*Untuk Style umum seluruh ahalaman*/
-        body {
-            font-family: 'Press Start 2P', cursive;
-            /*Font Pixel*/
-            background: #fff;
-            /*Warna latar*/
-            margin: 0;
-            /*menghapus jarak sistem/default*/
-            padding: 0;
-            /*hapus padding default*/
-            color: #ddd;
-            /*warna teks*/
-        }
-
-        /*Untuk mengatur header*/
-        header {
-            background: #222;
-            /*warna latar*/
-            padding: 20px;
-            /*ruang di dalam header*/
-            text-align: center;
-            /*atur posisi teks tengah*/
-            font-size: 1.2rem;
-            /*atur ukuran teks*/
-            position: sticky;
-            /*Agar menempel di atas saat scroll*/
-            top: 0;
-            /*menempel di bagian atas*/
-            z-index: 1000;
-            /*agar kelihatan di atas elemen lain*/
-        }
-
-        /*Mnegatur navigasi bar*/
-        nav {
-            display: flex;
-            /*membuat tampilan jadi mendatar*/
-            justify-content: center;
-            /*atur posisi ke tengah*/
-            gap: 10px;
-            /*jarak antara nav*/
-            background: #fff;
-            padding: 10px;
-            position: sticky;
-            /*agar nav barnya tetap menempel ketika di scroll*/
-            top: 3.5rem;
-            /*agar ada jarak dari header*/
-        }
-
-        /*Mengatur Tombol" navigasi bar*/
-        nav a {
-            background: #222;
-            color: white;
-            text-decoration: none;
-            /*menghilangkan underline*/
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.7rem;
-        }
-
-        /*Mengatur navigasi agar lebih presisi*/
-        #beranda,
-        #tentang,
-        #kontak {
-            scroll-margin-top: 10rem;
-        }
-
-        /*Hover nav bar*/
-        nav a:hover {
-            background: #444;
-        }
-
-        /*mengatur bagian main seprti ukuran dan lainya*/
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 15px;
-            background: #b97b7b;
-            border-radius: 10px;
-            color: #eee;
-        }
-
-        /*Judul*/
-        h2 {
-            margin-top: 0;
-        }
-
-        /*Nebgatur gambar icon email*/
-        .kontak-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        /*ukuran ikon*/
-        .kontak-info img {
-            width: 16px;
-            height: 16px;
-        }
-
-        /*Mengatur gambar scr*/
-        .gambar {
-            width: 100%;
-            max-width: auto;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-
-        /*Pengaturan jika web berjalan di mobile device*/
-        @media (max-width: 600px) {
-            body {
-                font-size: 10px;
-            }
-
-            nav a {
-                padding: 6px 10px;
-                font-size: 0.6rem;
-            }
-
-            main {
-                margin: 10px;
-                padding: 10px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Uploader</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #f0f4f8;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+    .uploader-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 420px;
+      width: 100%;
+    }
+    .upload-area {
+      border: 2px solid #3498db;
+      border-radius: 10px;
+      padding: 1rem 1rem 1.5rem 1rem;
+      margin-bottom: 1.5rem;
+      background-color: #fafcff;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+    .upload-area:focus-within {
+      border-color: #2980b9;
+      background-color: #eaf4ff;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #34495e;
+    }
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #bdc3c7;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    input[type="text"]:focus,
+    input[type="file"]:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 8px rgba(52,152,219,0.3);
+    }
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .separator {
+      text-align: center;
+      margin: 1.5rem 0;
+      position: relative;
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+    .separator::before,
+    .separator::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #bdc3c7;
+    }
+    .separator::before {
+      left: 0;
+    }
+    .separator::after {
+      right: 0;
+    }
+    .images-container {
+      margin-top: 2rem;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .image-box {
+      border: 2px solid #444c57;
+      border-radius: 12px;
+      padding: 0.75rem;
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .image-box img {
+      max-width: 100%;
+      border-radius: 12px;
+      max-height: 300px;
+      object-fit: contain;
+      display: block;
+    }
+    .image-box .remove-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #e74c3c;
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      line-height: 20px;
+      font-size: 16px;
+      text-align: center;
+      padding: 0;
+    }
+    .error-message {
+      margin-top: 1rem;
+      color: #e74c3c;
+      font-weight: 600;
+      text-align: center;
+      min-height: 1.5em;
+    }
+    @media (max-width: 480px) {
+      .uploader-container {
+        padding: 1.5rem;
+      }
+      .images-container {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <div>Web Saya</div>
-    </header>
-    <nav>
-        <a href="#beranda">Beranda</a>
-        <a href="#tentang">Tentang</a>
-        <a href="#kontak">Kontak</a>
-    </nav>
+  <h1>Image Uploader</h1>
+  <div class="uploader-container" role="region" aria-label="Image uploader">
+    <div class="upload-area" tabindex="0">
+      <label for="image-url">Upload from URL</label>
+      <input type="text" id="image-url" placeholder="Enter image URL here..." aria-describedby="url-desc" autocomplete="off" />
+      <button id="load-url-button" type="button">Load Image</button>
+    </div>
+    <div class="separator" aria-hidden="true">OR</div>
+    <div class="upload-area" tabindex="0">
+      <label for="image-file">Upload from Gallery</label>
+      <input type="file" id="image-file" accept="image/*" multiple/>
+    </div>
+    <div id="error-message" class="error-message" role="alert" aria-live="assertive"></div>
+  </div>
+  <div class="images-container" aria-live="polite" aria-label="Uploaded images list">
+    <!-- Dynamically appended image containers will appear here -->
+  </div>
 
-    <main id="beranda">
-        <h2>Beranda</h2>
-        <p>Assalamualaikum </p>
-        <p>Ini adalah Website saya yang saya buat</p>
-        <p>untuk tugas UTS.</p>
-        <p>Yaitu website singel page appliction.</p>
-        <p>Web yang saya buat bertema pixel</p>
-        <p>seperti retro game.</p>
-        <p></p>
-        <p>Gambar coba":</p>
-        <img src="https://img.freepik.com/free-vector/pixel-art-background-autumnal-landscape_23-2149597073.jpg?t=st=1746501073~exp=1746504673~hmac=730944430adccbb4049e1c132e745e65491dd3f0f4c193fe350f6e5079a14d72&w=996"
-            alt="pixelartvillage" class="gambar" />
-    </main>
+  <script>
+    const imageUrlInput = document.getElementById('image-url');
+    const loadUrlButton = document.getElementById('load-url-button');
+    const imageFileInput = document.getElementById('image-file');
+    const imagesContainer = document.querySelector('.images-container');
+    const errorMessage = document.getElementById('error-message');
 
-    <main id="tentang">
-        <h2>Tentang</h2>
-        <p>Ini adalah web sederhana yang dibuat dengan HTML </p>
-        <P>dan CSS saja.</p>
-        <p>Desainnya simpel tapi tetap enak dilihat dan </p>
-        <p>ringan. mungkin....</p>
-        <p>Untuk memenuhi tugas kuliah, sambil mempelajari</p>
-        <p>tentang HTML dan CSS</p>
-        <img src="https://img.freepik.com/free-vector/pixel-art-rural-landscape-background_52683-125366.jpg?t=st=1746504846~exp=1746508446~hmac=56ef37912fc3de77b7ac4e1427446cc4efbd8adf789c6e7552d35417e872099f&w=740"
-            alt="pixel-art-background-autumnal-landscape_23-2149597073" class="gambar">
-    </main>
+    function showError(message) {
+      errorMessage.textContent = message;
+    }
 
-    <main id="kontak">
-        <h2>Kontak</h2>
-        <div class="kontak-info">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/email.png" alt="email icon">
-            <span>emailku@example.com</span>
-        </div>
-        <img src="https://img.freepik.com/free-vector/pixelated-earth-planet-clouds_603843-979.jpg?t=st=1746505058~exp=1746508658~hmac=d47c9d4dbb21614bb244f1ddb34df527162d093e22cefc75c75f45e758069042&w=740"
-            alt="pixelated-earth-planet-clouds_603843-979" class="gambar">
-    </main>
+    function clearError() {
+      errorMessage.textContent = '';
+    }
+
+    function createImageBox(src, alt='Uploaded image') {
+      const box = document.createElement('div');
+      box.classList.add('image-box');
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.classList.add('remove-btn');
+      removeBtn.type = 'button';
+      removeBtn.innerHTML = '&times;';
+      removeBtn.title = 'Remove image';
+      removeBtn.onclick = () => box.remove();
+
+      // Image load handling
+      img.onload = () => {
+        clearError();
+      };
+      img.onerror = () => {
+        box.remove();
+        showError('Failed to load the image. Please check the URL or file and try again.');
+      };
+
+      box.appendChild(img);
+      box.appendChild(removeBtn);
+      imagesContainer.prepend(box);
+    }
+
+    loadUrlButton.addEventListener('click', () => {
+      const url = imageUrlInput.value.trim();
+      if (!url) {
+        showError('Please enter an image URL.');
+        return;
+      }
+      clearError();
+      // Try loading the image by adding it
+      createImageBox(url, 'Image loaded from URL');
+      imageUrlInput.value = '';
+    });
+
+    imageFileInput.addEventListener('change', () => {
+      clearError();
+      const files = Array.from(imageFileInput.files);
+      if (!files.length) {
+        showError('No file selected.');
+        return;
+      }
+      let invalidFileFound = false;
+      files.forEach(file => {
+        if (!file.type.startsWith('image/')) {
+          invalidFileFound = true;
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          createImageBox(e.target.result, 'Image loaded from device');
+        };
+        reader.onerror = () => {
+          showError('Error reading one of the selected files. Please try again.');
+        };
+        reader.readAsDataURL(file);
+      });
+      if (invalidFileFound) {
+        showError('Some selected files were not images and were skipped.');
+      }
+      imageFileInput.value = '';
+    });
+  </script>
 </body>
-
 </html>
+
